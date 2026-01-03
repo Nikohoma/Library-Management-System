@@ -9,8 +9,15 @@ namespace LibraryManagement;
 public abstract class LibraryItem
 {
     #region Properties
-    public string Title; public string Author; public int ItemId; public int DaysLate;
+    public string Title { get; protected set; }
+    public string Author { get; protected set; }
+    public int ItemId { get; protected set; } 
+    public int DaysLate { get; protected set; }
+
+    public List <LibraryItem> libraryItems = new List<LibraryItem>(); 
+
     #endregion
+
 
     #region Abstract Methods
 
@@ -19,8 +26,14 @@ public abstract class LibraryItem
     public abstract double LateFee();
 
     #endregion
+
+
+
 }
 
+/// <summary>
+/// Book Class inheriting LibraryItem and implementing INotifiable and IReservable interfaces
+/// </summary>
 public class Book : LibraryItem, INotifiable, IReservable
 {
 
@@ -50,16 +63,16 @@ public class Book : LibraryItem, INotifiable, IReservable
     #endregion
 
     #region Interfaces Execution
+
     public void Reserve() 
     {
-        Console.WriteLine($"{Title} reserved successfully.");
+        Console.WriteLine($"\n'{Title}' is reserved successfully.");
     }
 
     public void Notify()
     {
-        Console.WriteLine($"Notification Sent: {Title} is ready for pickup.");
+        Console.WriteLine($"Notification Sent: '{Title}' is ready for pickup.");
     }
-
 
     #endregion
 
@@ -82,7 +95,7 @@ public class Magazine : LibraryItem
     #region Override Methods
     public override void ItemDetails() 
     {
-        Console.WriteLine($"Magazine Details\nId : {ItemId}, Title : {Title}, Author: {Author}\n");
+        Console.WriteLine($"\nMagazine Details\nId : {ItemId}, Title : {Title}, Author: {Author}\n");
     }
 
     public override double LateFee()
@@ -92,5 +105,17 @@ public class Magazine : LibraryItem
 
     #endregion
 
+    #region Interfaces Execution
+    public void Reserve()
+    {
+        Console.WriteLine($"'{Title}' reserved successfully.");
+    }
+
+    public void Notify()
+    {
+        Console.WriteLine($"Notification Sent: '{Title}' is ready for pickup.");
+    }
+
+    #endregion
 
 }

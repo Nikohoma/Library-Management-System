@@ -6,12 +6,12 @@ namespace LibraryManagementSystemInterfaces
 {
     public interface IReservable
     {
-        public void Reserve(string title);
+        public void Reserve();
     }
 
     public interface INotifiable 
     {
-        public void Notify(string title);   
+        public void Notify();   
 
     }
 }

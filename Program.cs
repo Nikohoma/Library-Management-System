@@ -13,9 +13,13 @@ public class LMS
         Book book1 = new Book(title, author, id, daysLate);
         book1.ItemDetails();
         var output = book1.LateFee();
-        Console.Write("\nLate Fees: ");
+        Console.Write("Late Fees: ");
         Console.WriteLine(output);
+        book1.Reserve();
+        book1.Notify();
+        book1.libraryItems.Add(book1);
         Console.WriteLine();
+        
 
 
         /// Magazine
@@ -23,9 +27,15 @@ public class LMS
         Magazine magazine1 = new Magazine(Mtitle, Mauthor, Mid, MdaysLate);
         magazine1.ItemDetails();   
         var output1 = magazine1.LateFee();
-        Console.Write("\nLate Fees: ");
+        Console.Write("Late Fees: ");
         Console.WriteLine(output1);
+        magazine1.Reserve();
+        magazine1.Notify();
+        magazine1.libraryItems.Add(magazine1);
         Console.WriteLine();
+
+
+
 
         #endregion
     }
